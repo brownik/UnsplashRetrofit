@@ -1,43 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/mainPhoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintTop_toTopOf="parent" />
+<layout>
+
+    <data>
+
+        <variable
+            name="photoDataBinding"
+            type="com.brownik.unsplash.data.model.PhotoData" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/photoInfoLayer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/photoTitle"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/mainPhoto"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="photoTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setImageResource="@{photoDataBinding.urls.raw}"/>
 
-        <TextView
-            android:id="@+id/photoArtist"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/photoInfoLayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="photoArtist"
+            android:layout_marginEnd="5dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/photoTitle" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/photoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{photoDataBinding.description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/photoArtist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@{photoDataBinding.id}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/photoTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
