@@ -21,8 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintTop_toTopOf="parent"
-            app:setImageResource="@{photoDataBinding.urls.raw}"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/photoInfoLayer"
@@ -34,21 +33,21 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/photoTitle"
+                android:id="@+id/photoArtistId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{photoDataBinding.description}"
+                android:text="photoTitle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/photoArtist"
+                android:id="@+id/photoArtistName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@{photoDataBinding.id}"
+                android:text="photoArtistName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/photoTitle" />
+                app:layout_constraintTop_toBottomOf="@id/photoArtistId" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

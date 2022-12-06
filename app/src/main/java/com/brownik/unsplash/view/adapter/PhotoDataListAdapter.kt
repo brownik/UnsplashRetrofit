@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.brownik.unsplash.R
 import com.brownik.unsplash.data.model.PhotoData
 import com.brownik.unsplash.databinding.RecyclerviewPhotoBinding
+import com.bumptech.glide.Glide
 
 class PhotoDataListAdapter :
     ListAdapter<PhotoData, PhotoDataListAdapter.ViewHolder>(DiffCallback) {
@@ -16,7 +17,16 @@ class PhotoDataListAdapter :
         private val binding: RecyclerviewPhotoBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: PhotoData) = with(binding) {
-            photoDataBinding = data
+
+            photoArtistId.text = data.id
+            photoArtistName.text = data.user.username
+
+            Glide.with(mainPhoto.context)
+                .load(data.urls.regular)
+//                .onlyRetrieveFromCache(true)
+                .error(R.drawable.ic_launcher_foreground)
+                .centerCrop()
+                .into(mainPhoto)
         }
     }
 
@@ -26,8 +36,7 @@ class PhotoDataListAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding =
-            RecyclerviewPhotoBinding.bind(layoutInflater.inflate(
+        val binding = RecyclerviewPhotoBinding.bind(layoutInflater.inflate(
                 R.layout.recyclerview_photo,
                 parent,
                 false)

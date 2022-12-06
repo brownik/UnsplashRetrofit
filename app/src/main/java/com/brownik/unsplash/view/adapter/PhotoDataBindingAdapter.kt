@@ -11,8 +11,7 @@ object PhotoDataBindingAdapter {
     fun setImageResource(targetView: ImageView, url: String) {
         Glide.with(targetView.context)
             .load(url)
-            .error(R.drawable.ic_launcher_foreground)
-            .thumbnail(0.1f)
+            .onlyRetrieveFromCache(true)
             .centerCrop()
             .into(targetView)
     }
